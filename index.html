@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Flip.dev | Web Dev Flashcards</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header class="top">
+  <div class="brand">flip<span>.dev</span></div>
+  <button class="icon" id="theme" aria-label="Toggle theme">🌓</button>
+</header>
+
+<main class="layout">
+  <section class="study" aria-label="Study area">
+    <h1>Master web dev, one card at a time.</h1>
+    <div class="chips" id="chips" role="group" aria-label="Filter cards"></div>
+
+    <div class="meta"><span id="count"></span><span id="pct"></span></div>
+    <div class="bar" id="barwrap" role="progressbar" aria-label="Deck progress" aria-valuemin="0" aria-valuemax="100"><i id="bar"></i></div>
+
+    <div class="panelbox" id="panel" hidden>
+      <h2 id="pTitle"></h2><p id="pText"></p>
+      <button class="btn primary" id="pBtn"></button>
+    </div>
+
+    <div class="scene" id="scene">
+      <div class="inner" id="card" role="button" tabindex="0" aria-pressed="false" aria-label="Flashcard, press to flip">
+        <div class="face front">
+          <span class="tag" id="tag"></span>
+          <button class="star" id="star" aria-label="Bookmark card">☆</button>
+          <p class="q" id="q"></p>
+          <span class="hint">Click or press Space to reveal</span>
+        </div>
+        <div class="face back">
+          <span class="tag">Answer</span>
+          <p class="a" id="a"></p>
+          <button class="del" id="del" hidden>Delete my card</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="controls" id="controls">
+      <button class="btn" id="prev">← Previous</button>
+      <button class="btn primary flip" id="flip">Flip card</button>
+      <button class="btn" id="next">Next →</button>
+    </div>
+    <div class="rate" id="rate">
+      <button class="btn no" id="no">Review again</button>
+      <button class="btn yes" id="yes">Got it ✓</button>
+    </div>
+    <p class="status" id="status" aria-live="polite"></p>
+  </section>
+
+  <aside class="side" aria-label="Your progress">
+    <h2>Session</h2>
+    <div class="stats">
+      <div><b id="sLearned">0</b><span>Learned</span></div>
+      <div><b id="sAcc">0%</b><span>Accuracy</span></div>
+      <div><b id="sStreak">0</b><span>Streak</span></div>
+      <div><b id="sTime">0:00</b><span>Time</span></div>
+    </div>
+    <div class="actions">
+      <button class="btn" id="shuffle">Shuffle deck</button>
+      <button class="btn" id="add">+ Add your own card</button>
+      <button class="btn ghost" id="reset">Reset progress</button>
+    </div>
+    <h2>Shortcuts</h2>
+    <ul class="keys">
+      <li><kbd>←</kbd><kbd>→</kbd> Navigate</li>
+      <li><kbd>Space</kbd> Flip</li>
+      <li><kbd>Y</kbd> / <kbd>N</kbd> Got it / Review</li>
+      <li><kbd>B</kbd> Bookmark</li>
+      <li><kbd>S</kbd> Shuffle</li>
+    </ul>
+  </aside>
+</main>
+
+<dialog id="dlg">
+  <form method="dialog" id="form">
+    <h2>Add your own card</h2>
+    <label>Category
+      <select id="fCat"><option>HTML</option><option>CSS</option><option>JavaScript</option><option>Custom</option></select>
+    </label>
+    <label>Question <input id="fQ" required maxlength="140" placeholder="What is the DOM?"></label>
+    <label>Answer <textarea id="fA" required maxlength="400" rows="4" placeholder="Type the answer you want to remember"></textarea></label>
+    <div class="row">
+      <button class="btn" value="cancel" formnovalidate>Cancel</button>
+      <button class="btn primary" id="save" value="save">Save card</button>
+    </div>
+  </form>
+</dialog>
+
+<script src="script.js"></script>
+</body>
+</html>
